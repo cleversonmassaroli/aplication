@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="myApp"> <!-- Ativa/Starta o ANGULAR -->
+<head>
+	<title>Sétima Aula</title>
+	
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css">
+	<script type="text/javascript" src="vendor/angularjs/angular.js"></script>
+	<script type="text/javascript" src="js/myApp.js"></script>
+	<script type="text/javascript" src="js/controller/MeuController.js"></script>
+
+</head>
+<body ng-controller="MeuController">
+	<div class="container">
+
+		<h1>AngularJS!</h1>
+
+		<div>
+			<form ng-submit="enviaDados(pessoa)" id="meuFormulario" >
+				<div class="col-xs-12">
+					<div class="form-group">
+						<label>Nome e Sobrenome</label>
+						<input required minlength="3" ng-model="pessoa.nome" tabindex="1" class="form-control" type="text" placeholder="Insira o nome e Sobrenome" name=""><br>
+					</div>
+					<div class="form-group">
+						<label>Telefone</label>
+						<input required minlength="8" ng-model="pessoa.telefone" tabindex="2" class="form-control" type="text"  placeholder="(XX) 0000-0000" name=""><br>
+					</div>
+					<div class="form-group">
+						<label>E-mail</label>
+						<input required ng-model="pessoa.email" tabindex="3" class="form-control" type="email"  placeholder="Insira um e-mail" name=""><br>
+					</div>
+					<button class="btn btn-success pull-right" type="submit"  >Enviar</button>
+
+					<div class="clearfix"></div>
+					<div class="alert alert-danger" ng-show="msgAlert">Faça certo caraleo!</div>
+				</div>
+			</form>
+			<br>
+			<br>
+			<br>
+		</div>
+		
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Nome</th>
+					<th>Telefone</th>
+					<th>E-Mail</th>	
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in dados | orderBy:'nome'" >
+					<td>1</td>
+					<td>{{item.nome}}</td>
+					<td>{{item.telefone}}</td>
+					<td>{{item.email}}</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+
+</body>
+</html>
